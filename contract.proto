@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package userManagementPackage;
+
+service UserManagement{
+    rpc getAll(NoParams) returns (Users);
+    rpc get(Identifier) returns (UserDTO);
+    rpc add(User) returns (UserDTO);   
+    rpc dele(Identifier) returns (Boolean);
+}
+
+
+message NoParams{}
+
+message Users{
+ repeated UserDTO value = 1;
+}
+
+message User{
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message UserDTO{
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message Boolean {
+    bool value = 1;
+}
+
+
+message Identifier{
+    int32 value=1;
+}
